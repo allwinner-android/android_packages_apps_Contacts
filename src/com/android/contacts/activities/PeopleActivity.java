@@ -19,6 +19,7 @@ package com.android.contacts.activities;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.app.ActivityManager;
 import android.content.ActivityNotFoundException;
 import android.content.ContentUris;
 import android.content.Context;
@@ -221,6 +222,10 @@ public class PeopleActivity extends ContactsActivity implements
 
     @Override
     protected void onCreate(Bundle savedState) {
+        if(ActivityManager.isUserAMonkey()){
+            Log.d("Constants","monkey run finished");
+            this.finish();
+        }
         if (Log.isLoggable(Constants.PERFORMANCE_TAG, Log.DEBUG)) {
             Log.d(Constants.PERFORMANCE_TAG, "PeopleActivity.onCreate start");
         }
